@@ -1,0 +1,9 @@
+body{
+    --color:blueviolet;
+    --backgroundColor:rgb(228, 226, 226);
+    --borderColor:rgb(219, 219, 219);
+    --blue:rgb(59, 59, 187);
+}
+body{
+  box-sizing: border-box;
+}

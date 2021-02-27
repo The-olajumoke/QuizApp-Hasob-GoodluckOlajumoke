@@ -1,0 +1,95 @@
+.form{
+    height: 100vh;
+    width: 40%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid var(--borderColor);
+    border-right: 1px solid var(--borderColor);
+    position: relative;
+}
+.logo{
+    font-size: 30px;
+    font-style: italic;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-weight:700;
+}
+.form__title{
+    margin: 20px auto;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 600;
+    color: red;
+        color: var(--color);
+    text-transform: uppercase;
+}
+.form__names{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 20px auto;
+
+}
+.form__names input{
+    padding: 15px;
+    width: 49%;
+    border-radius: 10px;
+    font-size: px;
+    color:black;
+    background-color: Var(--backgroundColor);
+    border: none;
+}
+
+.form >input,.form__button {
+    padding: 15px ; 
+    width: 90%;
+    margin: 20px auto;
+    border-radius: 10px;
+    background-color: Var(--backgroundColor);
+
+    border: none;
+
+}
+
+.form__button{
+    position: relative;
+    background-color: rgb(62, 62, 221);
+    color: white;
+    font-size:20px;
+    font-weight: 500;
+    border: none;
+}
+.createBtn{
+background-color:var(--color);
+}
+.form__icon{
+    display: flex;
+    position: absolute;
+    left: 20px;
+    transform: scale(1.5);
+    color: white;
+
+}
+.form__btnCont{
+    position: relative;
+ width: 90%;
+    margin: 20px auto;
+}
+.links span:last-child{
+    color: var(--color);
+    font-weight: 600;
+}
+input[type=password]:focus, input[type=email]:focus,input[type=text]:focus{
+    outline: none;
+    border: 2px solid var(--color);
+}
+@media(max-width:1000px){
+    .form{
+        width: 100%;
+    }
+    
+}
