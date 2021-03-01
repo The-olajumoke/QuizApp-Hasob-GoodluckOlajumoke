@@ -34,7 +34,7 @@ export const getQuizArray =createAsyncThunk("question/getQuizList",async(_, {dis
             totalQuestions: resArr.questions,
           })
         );
-        history.push("/");
+        history.push("/quiz");
       }
       }
 
@@ -42,15 +42,8 @@ export const getQuizArray =createAsyncThunk("question/getQuizList",async(_, {dis
     console.log({error})
     console.log(error.response)
     localStorage.clear();
-    history.push("/login");
-    // if( error.response.data.status === "Token is Expired" ||
-        // error.response.status === "401"){
-          // console.log("token expired");
-      // delete axios.defaults.headers.common["Authorization"];
-      // localStorage.removeItem("jwtToken");
-      // localStorage.clear();
-      // history.push("/login");
-      // }
+    history.push("/");
+    
   }
 } )
 

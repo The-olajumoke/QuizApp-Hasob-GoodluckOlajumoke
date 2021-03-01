@@ -9,30 +9,22 @@ import CompleteMsg from "./components/CompleteMsg";
 import UserLandingPage from "./components/UserLandingPage";
 import QuizMaster from "./components/QuizMaster";
 import Question from "./components/Question";
-import history from "./util/history"
+import history from "./util/history";
 import TotalTime from "./components/TotalTime";
 
-
-
-
-
 function App() {
-
-
   return (
     <Router history={history}>
       <div className="app">
         <Switch>
           {/* <CompleteMsg/> */}
-          <Route path="/" exact component={Question}/>
-
-          <Route path="/login" component={Login} />
-          <Route path="/signup" component={Register}/>
+          <Route path="/" exact component={Login} />
+          <Route path="/signup" component={Register} />
           <Route path="/userPage" component={UserLandingPage} />
-          <Route path="/setQuiz" component={QuizMaster}/>
+          <Route path="/setQuiz" component={QuizMaster} />
           <Route path="/userLanding" component={UserLandingPage} />
+          <Route path="/quiz" component={Question} />
           <Route path="/completeMsg" component={CompleteMsg} />
-
         </Switch>
       </div>
     </Router>

@@ -15,7 +15,7 @@ export const registerNewUser = createAsyncThunk(
       const response = await axios.post(`${baseURL}/auth/register`, data);
       console.log(response);
       if (response) {
-        history.push("/login")
+        history.push("/")
       }
     } catch (error) {
       console.log({ error });
@@ -78,7 +78,7 @@ export const userSlice = createSlice({
       delete axios.defaults.headers.common["Authorization"];
       localStorage.removeItem("jwtToken");
       localStorage.clear();
-        history.push("/login");
+        history.push("/");
         
     },
     // return state;
