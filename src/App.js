@@ -10,7 +10,7 @@ import UserLandingPage from "./components/UserLandingPage";
 import QuizMaster from "./components/QuizMaster";
 import Question from "./components/Question";
 import history from "./util/history";
-import TotalTime from "./components/TotalTime";
+import Landing from "./components/Landing";
 
 function App() {
   return (
@@ -18,8 +18,9 @@ function App() {
       <div className="app">
         <Switch>
           {/* <CompleteMsg/> */}
-          <Route path="/" exact component={Login} />
+          <Route path="/" exact component={Landing} />
           <Route path="/signup" component={Register} />
+          <Route path="/login" component={Login}/>
           <Route path="/userPage" component={UserLandingPage} />
           <Route path="/setQuiz" component={QuizMaster} />
           <Route path="/userLanding" component={UserLandingPage} />

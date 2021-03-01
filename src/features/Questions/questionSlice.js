@@ -2,6 +2,8 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios"
 import history from "../../util/history";
 import logout from "../user/userSlice"
+import swal from "sweetalert";
+
 
 
 const baseURL = "https://hasquiz-api.herokuapp.com/api";
@@ -88,31 +90,36 @@ export const sendQuestion =createAsyncThunk("question/postQuestion",async(data,{
 // SUBMIT WITH ASYNC
 
 export const getResult =createAsyncThunk("question/getResult",async(data,{dispatch})=>{
-   dispatch(
-     getAllQuestions({
-       totalQuestions: "",
-     })
-   );
-  try {
-    const response = await axios.post(`${baseURL}/submit`,data);
-    console.log(response)
-    console.log(response.data.message)
-    console.log(response.data.meta.correctCount)
-    console.log(response.data.meta.totalQuestions)
-    if (response.data.message =="Test submitted successfully.") {
-      console.log("successful")
-      const numberOfQuestion=response.data.meta.totalQuestions;
-      const score=response.data.meta.correctCount;
-      dispatch(getScore({
-        score,
-        numberOfQuestion,}))
-        history.push("/completeMsg")
-    } else {
-      console.log("unsuccessful")
-    }
-  } catch (error) {
-    console.log({error})
-  }
+  swal("Are you sure you want to do this?", {
+    buttons: ["Oh noez!", true],
+  });
+  
+  //  dispatch(
+  //    getAllQuestions({
+  //      totalQuestions: "",
+  //    })
+  //  );
+
+  // try {
+  //   const response = await axios.post(`${baseURL}/submit`,data);
+  //   console.log(response)
+  //   console.log(response.data.message)
+  //   console.log(response.data.meta.correctCount)
+  //   console.log(response.data.meta.totalQuestions)
+  //   if (response.data.message =="Test submitted successfully.") {
+  //     console.log("successful")
+  //     const numberOfQuestion=response.data.meta.totalQuestions;
+  //     const score=response.data.meta.correctCount;
+  //     dispatch(getScore({
+  //       score,
+  //       numberOfQuestion,}))
+  //       history.push("/completeMsg")
+  //   } else {
+  //     console.log("unsuccessful")
+  //   }
+  // } catch (error) {
+  //   console.log({error})
+  // }
 } )
 
 
