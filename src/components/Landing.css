@@ -1,0 +1,17 @@
+.landing__text{
+    line-height: 2;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.landingBtn{
+    padding: 10px 30px;
+    flex: 1;
+    background-color: var(--color);
+    margin:0 10px;
+    font-size: 20px;
+    color: white;
+    font-weight: 500;
+    border-radius: 10px;
+}
+

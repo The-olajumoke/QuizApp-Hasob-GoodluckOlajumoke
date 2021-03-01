@@ -2,19 +2,11 @@
 //   buttons: ["Oh noez!", true],
 // });
 import React, { useState } from "react";
-import axios from "axios";
 import { useDispatch } from "react-redux";
 import Header from "./Header";
-import "./UserLandingPage.css";
 import history from "../util/history";
-import { logout } from "../features/user/userSlice";
-import { getRequest } from "../util/fetch";
+import "./Landing.css";
 
-import {
-  getAllQuestions,
-  getQuizArray,
-} from "../features/Questions/questionSlice";
-import Spinner from "./Spinner";
 
 function Landing() {
 const dispatch = useDispatch()
@@ -22,19 +14,31 @@ const dispatch = useDispatch()
     <div className="user">
       <Header
         title="Welcome to Quiz App"
-        desc="Give me a description of the name and purpose of this Quiz"
+        desc="Test your Knowledge on various areas.....are you up to the task?"
       />{" "}
       <div className="user__body">
         <div className="user__color"></div>
         <div className="user__content">
-            
-          <button onClick={() =>history.push("/login")} className="logBtn">
-            Sign Up
-          </button>
-          <button onClick={() =>history.push("/signup")} className="logBtn">
-            Log In
-          </button>
-
+          <h4 className="landing__text">
+            At Quiz App you answer various questions based on your selected
+            options.
+            <h5>Click on the "Sign up" button to create an account</h5>
+            <h5>Click on the "Log in" button to start your quiz</h5>
+          </h4>
+          <div className="d-flex w-100">
+            <button
+              className="landingBtn"
+              onClick={() => history.push("/login")}
+            >
+              Log In
+            </button>
+            <button
+              className="landingBtn"
+              onClick={() => history.push("/signup")}
+            >
+              Sign Up
+            </button>
+          </div>
         </div>
       </div>
     </div>

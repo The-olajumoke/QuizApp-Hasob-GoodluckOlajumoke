@@ -71,12 +71,13 @@ export const sendQuestion =createAsyncThunk("question/postQuestion",async(data,{
   } else {
     console.log("found");
   }
-  //Create a landing page that welcomes you and tells you to log in or signup
+
   // notification for question sent
   // question data validation
   //notification for submit authentication
   //spinner for login and sign up
   //button for add question
+  // Log out button for admin landing page
 
   // try {
   //   const response = await axios.post(`${baseURL}/questions`, data);
@@ -93,7 +94,7 @@ export const getResult =createAsyncThunk("question/getResult",async(data,{dispat
   swal("Are you sure you want to do this?", {
     buttons: ["Oh noez!", true],
   });
-  
+
   //  dispatch(
   //    getAllQuestions({
   //      totalQuestions: "",
