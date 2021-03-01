@@ -1,30 +1,37 @@
 import React, { useState } from "react";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { postRequest } from "../util/fetch";
-import {sendQuestion} from "../features/Questions/questionSlice"
+import { sendQuestion } from "../features/Questions/questionSlice";
 import Header from "./Header";
 import "./UserLandingPage.css";
 import "./QuizMaster.css";
 import "./Modal.css";
 import { useDispatch } from "react-redux";
-import { QuestionAnswer,DoneAll,DeleteForever,LibraryAdd,AlarmAdd, ArrowBack } from "@material-ui/icons";
+import {
+  QuestionAnswer,
+  DoneAll,
+  DeleteForever,
+  LibraryAdd,
+  AlarmAdd,
+  ArrowBack,
+} from "@material-ui/icons";
 
 function QuizMaster() {
-const dispatch = useDispatch()
+  const dispatch = useDispatch();
   // STATES
   const [showAnswerModal, setShowAnswerModal] = useState(false);
   const [showTimerModal, setShowTimerModal] = useState(false);
 
-const [state, setState] = useState({
-  hours: "",
-  minutes: "",
-  seconds: "",
-});
+  const [state, setState] = useState({
+    hours: "",
+    minutes: "",
+    seconds: "",
+  });
   const [options, setOptions] = useState([]);
   const [textInputValue, setTextInputValue] = useState("");
   const [question, setQuestion] = useState("");
-  const [radioValue, setRadioValue]=useState('')
-  
+  const [radioValue, setRadioValue] = useState("");
+
   //   FUNCTIONS
   function openAnswerModal() {
     setShowAnswerModal((prev) => !prev);
@@ -36,30 +43,32 @@ const [state, setState] = useState({
     setQuestion(e.target.value);
     // setQuestion("");
   };
-  const handleOptionsInput =(e)=>{
-      setTextInputValue(e.target.value)
-  }
-  const handleSettingOption =(e) =>{
-      if((e.keyCode==="13" || e.key==="Enter") && e.target.value!=="" && options.length <4){
-          e.preventDefault();
-          setOptions((prev) =>[...prev,textInputValue])
-          setTextInputValue("")
-      }
-  }
-  
-const handleChange = ({ target: { name, value } }) => {
-  if (name === "hours") {
-    setState({ ...state, [name]: value * 3600000 });
-  }
-  if (name === "minutes") {
-    setState({ ...state, [name]: value * 60000 });
-  }
-  if (name === "seconds") {
-    setState({ ...state, [name]: value * 1000 });
-  }
+  const handleOptionsInput = (e) => {
+    setTextInputValue(e.target.value);
+  };
+  const handleSettingOption = (e) => {
+    if (
+      (e.keyCode === "13" || e.key === "Enter") &&
+      e.target.value !== "" &&
+      options.length < 4
+    ) {
+      e.preventDefault();
+      setOptions((prev) => [...prev, textInputValue]);
+      setTextInputValue("");
+    }
+  };
 
-};
-
+  const handleChange = ({ target: { name, value } }) => {
+    if (name === "hours") {
+      setState({ ...state, [name]: value * 3600000 });
+    }
+    if (name === "minutes") {
+      setState({ ...state, [name]: value * 60000 });
+    }
+    if (name === "seconds") {
+      setState({ ...state, [name]: value * 1000 });
+    }
+  };
 
   function maxLengthCheck(object) {
     if (object.target.value.length > object.target.maxLength) {
@@ -70,27 +79,25 @@ const handleChange = ({ target: { name, value } }) => {
     }
   }
 
+  const time = state.hours + state.minutes + state.seconds;
+  const eachQuestion = [question, options, radioValue, time];
 
-     const time = state.hours + state.minutes + state.seconds;
-     const eachQuestion = [question, options, radioValue, time];
+  const answers = options.map((option) => ({
+    answer: `${option}`,
+    correct: radioValue === option,
+  }));
 
-     const answers = options.map((option) => ({
-       answer: `${option}`,
-       correct: radioValue === option,
-     }));
+  const data = {
+    question: question,
+    answers,
+    time,
+  };
 
-     const data = {
-       question: question,
-       answers,
-       time,
-     };
-
-  const postQuestion=(e)=>{
-      e.preventDefault();
- setShowTimerModal((prev) => !prev);
-  dispatch(sendQuestion(data))
- }
- 
+  const postQuestion = (e) => {
+    e.preventDefault();
+    setShowTimerModal((prev) => !prev);
+    dispatch(sendQuestion(data));
+  };
 
   return (
     <div className="user">
@@ -266,4 +273,3 @@ const handleChange = ({ target: { name, value } }) => {
 }
 
 export default QuizMaster;
-

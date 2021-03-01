@@ -50,13 +50,39 @@ export const getQuizArray =createAsyncThunk("question/getQuizList",async(_, {dis
 // POST QUESTION BY ADMIN WITH ASYNC
 
 export const sendQuestion =createAsyncThunk("question/postQuestion",async(data,{dispatch})=>{
-  console.log(data)
-  try {
-    const response = await axios.post(`${baseURL}/questions`,data);
-    console.log(response)
-  } catch (error) {
-    console.log({error})
+  console.log(data);
+  // const answerArr=[];
+  const answerArr = data.answers.map((answer) => {
+    if (answer.correct) {
+      console.log("yes");
+      return answer.correct;
+    } else {
+      console.log("no");
+      return answer.correct;
+    }
+  });
+  console.log(answerArr);
+  const found = answerArr.filter((ans) => ans === true);
+  console.log(found);
+  if (found === []) {
+    console.log("notfound");
+  } else {
+    console.log("found");
   }
+  //Create a landing page that welcomes you and tells you to log in or signup
+  // notification for question sent
+  // question data validation
+  //notification for submit authentication
+  //spinner for login and sign up
+  //button for add question
+
+  // try {
+  //   const response = await axios.post(`${baseURL}/questions`, data);
+  //   console.log(response);
+  // } catch (error) {
+  //   console.log({ error });
+  // }
+
 } )
 
 // SUBMIT WITH ASYNC
